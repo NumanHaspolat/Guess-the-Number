@@ -8,11 +8,17 @@ const canDiv = document.querySelector(".can-div");
 const p = document.querySelector(".p");
 const liveCan = document.querySelector(".live-can");
 const modalEl = document.querySelector(".modal-container");
+const modal = document.querySelector(".modal");
 const modalBtn = document.querySelector("#modal-ok");
 const final = document.getElementById("final");
+const h4 = document.querySelector(".h4");
 let value1 = 100;
 let value2 = 0;
 let num;
+
+h4.innerHTML = `The number was ${randomNumber}`;
+
+final.after(h4);
 
 console.log(`Rastgele sayi : ${randomNumber}`);
 
@@ -29,37 +35,38 @@ setInterval(change, 1000);
 guess.addEventListener("click", () => {
   live--;
 
-  if(+number.value > randomNumber){
-    value1 = +number.value 
-    number.setAttribute('placeholder', `${value2} - ${value1}`)
-  } else {
-    value2 = +number.value 
-    number.setAttribute('placeholder', `${value2} - ${value1}`)
-  }
+  if (!(+number.value < 0)) {
+    if (+number.value > randomNumber) {
+      value1 = +number.value;
+      number.setAttribute("placeholder", `${value2} - ${value1}`);
+    } else {
+      value2 = +number.value;
+      number.setAttribute("placeholder", `${value2} - ${value1}`);
+    }
 
-  liveCan.innerHTML = `${live} `;
-  if (+number.value === randomNumber) {
-    modalEl.classList.add("kazanc");
-    modalEl.classList.add("show");
-    final.innerHTML = `Kazandin`;
-    document.querySelector(".modal").style.backgroundColor = "#5AB7AC";
-    modalBtn.style.color = "#5AB7AC";
-    modalBtn.addEventListener("click", () => {
-      modalBtn.style.display = "none";
-      window.location.reload();
-    });
-    number.value = "";
-  } else if (live == 0) {
-    modalEl.classList.add("show");
-    modalBtn.addEventListener("click", () => {
-      modalBtn.style.display = "none";
-      window.location.reload();
-    });
-  } else {
-    number.value = "";
-    input.focus();
+    liveCan.innerHTML = `${live} `;
+    if (+number.value === randomNumber) {
+      modalEl.classList.add("kazanc");
+      modalEl.classList.add("show");
+      final.innerHTML = `Kazandin`;
+      document.querySelector(".modal").style.backgroundColor = "#5AB7AC";
+      modalBtn.style.color = "#5AB7AC";
+      modalBtn.addEventListener("click", () => {
+        modalBtn.style.display = "none";
+        window.location.reload();
+      });
+      number.value = "";
+    } else if (live == 0) {
+      modalEl.classList.add("show");
+      modalBtn.addEventListener("click", () => {
+        modalBtn.style.display = "none";
+        window.location.reload();
+      });
+    } else {
+      number.value = "";
+      input.focus();
+    }
   }
-
 });
 
 number.addEventListener("keydown", (event) => {

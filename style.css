@@ -8,6 +8,12 @@ body {
   background-color: aqua;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .parent {
   display: flex;
   flex-direction: column;
@@ -31,7 +37,7 @@ body {
   align-items: center;
 }
 
-.number{  
+.number {
   text-align: center;
   transform: scale(1.09);
 }
@@ -51,6 +57,10 @@ body {
   transform: scale(1.1);
 }
 
+.h4{
+  color: rgb(206, 206, 206);
+  margin-top: 1rem;
+}
 
 .modal p {
   display: flex;
@@ -86,7 +96,7 @@ body {
   font-size: 1.5rem;
 }
 
-.kazanc{
+.kazanc {
   background-color: aqua;
 }
 
